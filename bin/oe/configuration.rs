@@ -114,7 +114,7 @@ pub struct Execute {
     pub cmd: Cmd,
 }
 
-/// Configuration for the OpenEthereum client.
+/// Configuration for the Ecoball client.
 #[derive(Debug, PartialEq)]
 pub struct Configuration {
     /// Arguments to be interpreted.
@@ -1806,7 +1806,7 @@ mod tests {
                 assert!(c
                     .net_conf
                     .client_version
-                    .starts_with("OpenEthereum/Somebody/"));
+                    .starts_with("Ecoball/Somebody/"));
             }
             _ => panic!("Should be Cmd::Run"),
         }
