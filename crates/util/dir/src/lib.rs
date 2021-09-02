@@ -34,8 +34,8 @@
 /// Unix/MacOS: $BASE/io.parity.ethereum/
 ///
 /// For OpenEthereum paths we are using:
-/// Wndows/MacOS: $BASE/OpenEthereum/
-/// Unix: $BASE/openethereum/
+/// Wndows/MacOS: $BASE/Ecoball/
+/// Unix: $BASE/ecoball/
 ///
 extern crate app_dirs;
 extern crate ethereum_types;
@@ -278,9 +278,9 @@ fn default_path(t: AppDataType) -> Option<PathBuf> {
 
     let mut root = data_root(t).ok()?;
     root.push(if LOWERCASE {
-        "openethereum"
+        "ecoball"
     } else {
-        "OpenEthereum"
+        "Ecoball"
     });
     Some(root)
 }
@@ -288,7 +288,7 @@ fn default_path(t: AppDataType) -> Option<PathBuf> {
 fn fallback_path() -> PathBuf {
     let mut p = PathBuf::new();
     p.push("$HOME");
-    p.push(".openethereum");
+    p.push(".ecoball");
     p
 }
 
@@ -312,7 +312,7 @@ pub fn default_local_path() -> String {
 
 /// these variables are used only for backward compatibility .
 /// In case that there is folder from older parity version we will use it as default path,
-/// in case there is not we will create openethereum folder.Algorithm
+/// in case there is not we will create ecoball folder.Algorithm
 #[cfg(target_os = "macos")]
 mod platform {
     pub const LOWERCASE: bool = false;

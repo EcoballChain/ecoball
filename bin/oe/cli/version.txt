@@ -1,5 +1,7 @@
-OpenEthereum Client.
+Ecoball Client.
   version {}
+By Ecoball Community
+
 Copyright 2015-2020 Parity Technologies (UK) Ltd.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
 This is free software: you are free to change and redistribute it.

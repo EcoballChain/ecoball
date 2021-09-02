@@ -1,5 +1,5 @@
-OpenEthereum Client.
-    By Wood/Paronyan/Kotewicz/Drwięga/Volf/Greeff
+Ecoball Client.
+    By Ecoball Community/Wood/Paronyan/Kotewicz/Drwięga/Volf/Greeff
        Habermeier/Czaban/Gotchac/Redman/Nikolsky
        Schoedon/Tang/Adolfsson/Silva/Palm/Hirsz et al.
     Copyright 2015-2020 Parity Technologies (UK) Ltd.

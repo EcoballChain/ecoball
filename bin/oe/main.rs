@@ -24,7 +24,7 @@ extern crate fdlimit;
 #[macro_use]
 extern crate log;
 extern crate ansi_term;
-extern crate openethereum;
+extern crate ecoball;
 extern crate panic_hook;
 extern crate parity_daemonize;
 extern crate parking_lot;
@@ -46,7 +46,7 @@ use ansi_term::Colour;
 use ctrlc::CtrlC;
 use ethcore_logger::setup_log;
 use fdlimit::raise_fd_limit;
-use openethereum::{start, ExecutionAction};
+use ecoball::{start, ExecutionAction};
 use parity_daemonize::AsHandle;
 use parking_lot::{Condvar, Mutex};
 
@@ -62,7 +62,7 @@ struct ExitStatus {
 fn main() -> Result<(), i32> {
     let conf = {
         let args = std::env::args().collect::<Vec<_>>();
-        openethereum::Configuration::parse_cli(&args).unwrap_or_else(|e| e.exit())
+        ecoball::Configuration::parse_cli(&args).unwrap_or_else(|e| e.exit())
     };
 
     let logger = setup_log(&conf.logger_config()).unwrap_or_else(|e| {

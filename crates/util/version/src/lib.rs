@@ -55,7 +55,7 @@ pub fn version() -> String {
     let commit_date = vergen::commit_date().replace("-", "");
     let date_dash = if commit_date.is_empty() { "" } else { "-" };
     format!(
-        "OpenEthereum/v{}-{}{}{}{}{}/{}/rustc{}",
+        "Ecoball/v{}-{}{}{}{}{}/{}/rustc{}",
         env!("CARGO_PKG_VERSION"),
         THIS_TRACK,
         sha3_dash,
@@ -82,7 +82,7 @@ pub fn version_data() -> Bytes {
             .parse::<u32>()
             .expect("Environment variables are known to be valid; qed");
     s.append(&v);
-    s.append(&"OpenEthereum");
+    s.append(&"Ecoball");
     s.append(&generated::rustc_version());
     s.append(&&Target::os()[0..2]);
     s.out()
