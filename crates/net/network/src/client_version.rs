@@ -24,11 +24,12 @@ use std::fmt;
 /// Parity client string prefix
 const LEGACY_CLIENT_ID_PREFIX: &str = "Parity-Ethereum";
 const CURRENT_CLIENT_ID_PREFIX: &str = "OpenEthereum";
+const ECOBALL_CLIENT_ID_PREFIX: &str = "Ecoball";
 
 lazy_static! {
 /// Parity versions starting from this will accept block bodies requests
 /// of 256 bodies
-    static ref PARITY_CLIENT_LARGE_REQUESTS_VERSION: Version = Version::parse("2.4.0").unwrap();
+    static ref ECOBALL_CLIENT_LARGE_REQUESTS_VERSION: Version = Version::parse("1.0.0").unwrap();
 }
 
 /// Description of the software version running in a peer
@@ -58,7 +59,7 @@ impl ParityClientData {
         compiler: String,
     ) -> Self {
         // Flags logic
-        let can_handle_large_requests = &semver >= &PARITY_CLIENT_LARGE_REQUESTS_VERSION;
+        let can_handle_large_requests = &semver >= &ECOBALL_CLIENT_LARGE_REQUESTS_VERSION;
 
         // Instantiate and return
         ParityClientData {
@@ -121,7 +122,7 @@ impl Default for ClientVersion {
 /// Provide information about what a particular version of a
 /// peer software can do
 pub trait ClientCapabilities {
-    /// Parity versions before PARITY_CLIENT_LARGE_REQUESTS_VERSION would not
+    /// Parity versions before ECOBALL_CLIENT_LARGE_REQUESTS_VERSION would not
     /// check the accumulated size of a packet when building a response to a
     /// GET_BLOCK_BODIES request. If the packet was larger than a given limit,
     /// instead of sending fewer blocks no packet would get sent at all. Query
@@ -154,6 +155,7 @@ impl ClientCapabilities for ClientVersion {
 fn is_parity(client_id: &str) -> bool {
     client_id.starts_with(LEGACY_CLIENT_ID_PREFIX)
         || client_id.starts_with(CURRENT_CLIENT_ID_PREFIX)
+        || client_id.starts_with(ECOBALL_CLIENT_ID_PREFIX)
 }
 
 fn is_nethermind(client_id: &str) -> bool {
@@ -260,8 +262,8 @@ fn get_number_from_version(version: &str) -> Option<&str> {
 pub mod tests {
     use super::*;
 
-    const PARITY_CLIENT_SEMVER: &str = "2.4.0";
-    const PARITY_CLIENT_OLD_SEMVER: &str = "2.2.0";
+    const PARITY_CLIENT_SEMVER: &str = "1.0.0";
+    const PARITY_CLIENT_OLD_SEMVER: &str = "0.9.9";
     const PARITY_CLIENT_OS: &str = "linux";
     const PARITY_CLIENT_COMPILER: &str = "rustc";
     const PARITY_CLIENT_IDENTITY: &str = "ExpanseSOLO";
