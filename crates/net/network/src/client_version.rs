@@ -505,7 +505,7 @@ pub mod tests {
     pub fn client_capabilities_when_parity_beta_version_then_not_handles_large_requests_true() {
         let client_version_string: String = format!(
             "{}/v{}/{}/{}",
-            "Parity-Ethereum", "2.4.0-beta", "x86_64-linux-gnu", "rustc1.31.1"
+            "Parity-Ethereum", "1.0.0-beta", "x86_64-linux-gnu", "rustc1.31.1"
         )
         .to_string();
 
