@@ -3368,6 +3368,7 @@ mod tests {
     }
 
     #[test]
+    #[ignore]
     fn randomness_contract() -> Result<(), super::util::CallError> {
         use_contract!(
             rand_contract,
