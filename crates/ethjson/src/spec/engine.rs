@@ -16,7 +16,7 @@
 
 //! Engine deserialization.
 
-use super::{AuthorityRound, BasicAuthority, Clique, Ethash, InstantSeal, NullEngine};
+use super::{AuthorityRound, Vpos, BasicAuthority, Clique, Ethash, InstantSeal, NullEngine};
 
 /// Engine deserialization.
 #[derive(Debug, PartialEq, Deserialize)]
@@ -34,6 +34,8 @@ pub enum Engine {
     BasicAuthority(BasicAuthority),
     /// AuthorityRound engine.
     AuthorityRound(AuthorityRound),
+    /// Vpos engine.
+    Vpos(Vpos),
     /// Clique engine.
     Clique(Clique),
 }
@@ -130,6 +132,24 @@ mod tests {
         let deserialized: Engine = serde_json::from_str(s).unwrap();
         match deserialized {
             Engine::AuthorityRound(_) => {} // AuthorityRound is unit tested in its own file.
+            _ => panic!(),
+        };
+
+        let s = r#"{
+			"vpos": {
+				"params": {
+					"stepDuration": "0x02",
+					"validators": {
+						"list" : ["0xc6d9d2cd449a754c494264e1809c50e34d64562b"]
+					},
+					"startStep" : 24,
+					"validateStepTransition": 150
+				}
+			}
+		}"#;
+        let deserialized: Engine = serde_json::from_str(s).unwrap();
+        match deserialized {
+            Engine::Vpos(_) => {} // Vpos is unit tested in its own file.
             _ => panic!(),
         };
 

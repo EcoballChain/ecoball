@@ -44,6 +44,14 @@ pub struct AuthorityRound {
     pub signature: H520,
 }
 
+/// Vpos seal.
+pub struct Vpos {
+    /// Seal step.
+    pub step: usize,
+    /// Seal signature.
+    pub signature: H520,
+}
+
 /// Tendermint seal.
 pub struct Tendermint {
     /// Seal round.
@@ -55,6 +63,14 @@ pub struct Tendermint {
 }
 
 impl Into<Generic> for AuthorityRound {
+    fn into(self) -> Generic {
+        let mut s = RlpStream::new_list(2);
+        s.append(&self.step).append(&self.signature);
+        Generic(s.out())
+    }
+}
+
+impl Into<Generic> for Vpos {
     fn into(self) -> Generic {
         let mut s = RlpStream::new_list(2);
         s.append(&self.step).append(&self.signature);
@@ -81,6 +97,8 @@ pub enum Seal {
     Ethereum(Ethereum),
     /// AuthorityRound seal.
     AuthorityRound(AuthorityRound),
+    /// Vpos seal.
+    Vpos(Vpos),
     /// Tendermint seal.
     Tendermint(Tendermint),
     /// Generic RLP seal.
@@ -95,6 +113,10 @@ impl From<ethjson::spec::Seal> for Seal {
                 mix_hash: eth.mix_hash.into(),
             }),
             ethjson::spec::Seal::AuthorityRound(ar) => Seal::AuthorityRound(AuthorityRound {
+                step: ar.step.into(),
+                signature: ar.signature.into(),
+            }),
+            ethjson::spec::Seal::Vpos(ar) => Seal::Vpos(Vpos {
                 step: ar.step.into(),
                 signature: ar.signature.into(),
             }),
@@ -114,6 +136,7 @@ impl Into<Generic> for Seal {
             Seal::Generic(generic) => generic,
             Seal::Ethereum(eth) => eth.into(),
             Seal::AuthorityRound(ar) => ar.into(),
+            Seal::Vpos(ar) => ar.into(),
             Seal::Tendermint(tender) => tender.into(),
         }
     }

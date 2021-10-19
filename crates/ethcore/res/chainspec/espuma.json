@@ -2,7 +2,7 @@
   "name": "Espuma testnet",
   "dataDir": "espuma",
   "engine": {
-    "authorityRound": {
+    "vpos": {
       "params": {
         "stepDuration": 3,
         "blockReward": "0x0",
@@ -50,7 +50,7 @@
   },
   "genesis": {
     "seal": {
-      "authorityRound": {
+      "vpos": {
         "step": "0x0",
         "signature": "0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
       }

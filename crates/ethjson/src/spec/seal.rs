@@ -39,6 +39,16 @@ pub struct AuthorityRoundSeal {
     pub signature: H520,
 }
 
+/// Vpos seal.
+#[derive(Debug, PartialEq, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct VposSeal {
+    /// Seal step.
+    pub step: Uint,
+    /// Seal signature.
+    pub signature: H520,
+}
+
 /// Tendermint seal.
 #[derive(Debug, PartialEq, Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -60,6 +70,8 @@ pub enum Seal {
     Ethereum(Ethereum),
     /// AuthorityRound seal.
     AuthorityRound(AuthorityRoundSeal),
+    /// Vpos seal.
+    Vpos(VposSeal),
     /// Tendermint seal.
     Tendermint(TendermintSeal),
     /// Generic seal.
@@ -71,7 +83,7 @@ mod tests {
     use crate::{
         bytes::Bytes,
         hash::*,
-        spec::{AuthorityRoundSeal, Ethereum, Seal, TendermintSeal},
+        spec::{AuthorityRoundSeal, VposSeal, Ethereum, Seal, TendermintSeal},
         uint::Uint,
     };
     use ethereum_types::{H256 as Eth256, H520 as Eth520, H64 as Eth64, U256};
@@ -141,5 +153,12 @@ mod tests {
 			proposal: H520(Eth520::from_str("3000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003").unwrap()),
 			precommits: vec![H520(Eth520::from_str("4000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004").unwrap())]
 		}));
+
+        // [4]
+        assert_eq!(deserialized[2], Seal::Vpos(VposSeal {
+			step: Uint(U256::from(0x0)),
+			signature: H520(Eth520::from_str("2000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002").unwrap())
+		}));
+
     }
 }
