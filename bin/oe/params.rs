@@ -39,6 +39,7 @@ use crate::configuration;
 #[derive(Debug, PartialEq)]
 pub enum SpecType {
     Foundation,
+    Ecoball,
     Poanet,
     Xdai,
     Espuma,
@@ -61,7 +62,7 @@ pub enum SpecType {
 
 impl Default for SpecType {
     fn default() -> Self {
-        SpecType::Foundation
+        SpecType::Ecoball
     }
 }
 
@@ -71,6 +72,7 @@ impl str::FromStr for SpecType {
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         let spec = match s {
             "eth" | "ethereum" | "foundation" | "mainnet" => SpecType::Foundation,
+            "ecoball" => SpecType::Ecoball,
             "poanet" | "poacore" => SpecType::Poanet,
             "xdai" => SpecType::Xdai,
             "espuma" | "testnet" => SpecType::Espuma,
@@ -98,6 +100,7 @@ impl fmt::Display for SpecType {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         f.write_str(match *self {
             SpecType::Foundation => "foundation",
+            SpecType::Ecoball => "ecoball",
             SpecType::Poanet => "poanet",
             SpecType::Xdai => "xdai",
             SpecType::Espuma => "espuma",
@@ -125,6 +128,7 @@ impl SpecType {
         let params = params.into();
         match *self {
             SpecType::Foundation => Ok(ethereum::new_foundation(params)),
+            SpecType::Ecoball => Ok(ethereum::new_ecoball(params)),
             SpecType::Poanet => Ok(ethereum::new_poanet(params)),
             SpecType::Xdai => Ok(ethereum::new_xdai(params)),
             SpecType::Espuma => Ok(ethereum::new_espuma(params)),
@@ -262,11 +266,7 @@ pub enum GasPricerConfig {
 
 impl Default for GasPricerConfig {
     fn default() -> Self {
-        GasPricerConfig::Calibrated {
-            usd_per_tx: 0.0001f32,
-            recalibration_period: Duration::from_secs(3600),
-            api_endpoint: configuration::ETHERSCAN_ETH_PRICE_ENDPOINT.to_string(),
-        }
+        GasPricerConfig::Fixed(U256::zero())
     }
 }
 
@@ -413,7 +413,7 @@ mod tests {
 
     #[test]
     fn test_spec_type_default() {
-        assert_eq!(SpecType::Foundation, SpecType::default());
+        assert_eq!(SpecType::Ecoball, SpecType::default());
     }
 
     #[test]
