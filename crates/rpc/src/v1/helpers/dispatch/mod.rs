@@ -390,11 +390,12 @@ where
     C: BlockChainClient,
     M: MinerService,
 {
-    client
-        .gas_price_corpus(100)
-        .percentile(percentile)
-        .cloned()
-        .unwrap_or_else(|| miner.sensible_gas_price())
+    U256::from(11000000000u64)
+    // client
+    //    .gas_price_corpus(100)
+    //    .percentile(percentile)
+    //    .cloned()
+    //    .unwrap_or_else(|| miner.sensible_gas_price())
 }
 
 /// Convert RPC confirmation payload to signer confirmation payload.
