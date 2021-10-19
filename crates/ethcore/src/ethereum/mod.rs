@@ -50,6 +50,14 @@ pub fn new_foundation<'a, T: Into<SpecParams<'a>>>(params: T) -> Spec {
     )
 }
 
+/// Create a new Ecoball mainnet chain spec.
+pub fn new_ecoball<'a, T: Into<SpecParams<'a>>>(params: T) -> Spec {
+    load(
+        params.into(),
+        include_bytes!("../../res/chainspec/ecoball.json"),
+    )
+}
+
 /// Create a new POA Network mainnet chain spec.
 pub fn new_poanet<'a, T: Into<SpecParams<'a>>>(params: T) -> Spec {
     load(
