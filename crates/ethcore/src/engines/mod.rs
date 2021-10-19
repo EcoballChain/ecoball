@@ -17,6 +17,7 @@
 //! Consensus engine specification and basic implementations.
 
 mod authority_round;
+mod vpos;
 mod basic_authority;
 mod clique;
 mod instant_seal;
@@ -28,6 +29,7 @@ pub mod signer;
 
 pub use self::{
     authority_round::AuthorityRound,
+    vpos::Vpos,
     basic_authority::BasicAuthority,
     clique::Clique,
     instant_seal::{InstantSeal, InstantSealParams},
