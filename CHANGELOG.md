@@ -1,3 +1,30 @@
+## OpenEthereum v3.3.0-rc.16
+
+Enhancements:
+* Additionally check zero gas price transactions by block verifier
+
+## OpenEthereum v3.3.0-rc.15
+
+* Revert eip1559BaseFeeMinValue activation on xDai at London hardfork block
+
+## OpenEthereum v3.3.0-rc.14
+
+Enhancements:
+* Add eip1559BaseFeeMinValue and eip1559BaseFeeMinValueTransition spec options
+* Activate eip1559BaseFeeMinValue on xDai at London hardfork block (19040000), set it to 20 GWei
+* Activate eip1559BaseFeeMinValue on POA Core at block 24199500 (November 8, 2021), set it to 10 GWei
+* Delay difficulty bomb to June 2022 for Ethereum Mainnet (EIP-4345)
+
+## OpenEthereum v3.3.0-rc.13
+
+Enhancements:
+* London hardfork block: POA Core (24090200)
+
+## OpenEthereum v3.3.0-rc.12
+
+Enhancements:
+* London hardfork block: xDai (19040000)
+
 ## OpenEthereum v3.3.0-rc.11
 
 Bug fixes:
