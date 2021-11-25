@@ -119,10 +119,7 @@ mod tests {
     use super::BlockReward;
     use crate::{
         hash::Address,
-        spec::{
-            vpos::Vpos, step_duration::StepDuration,
-            validator_set::ValidatorSet,
-        },
+        spec::{step_duration::StepDuration, validator_set::ValidatorSet, vpos::Vpos},
         uint::Uint,
     };
     use ethereum_types::{H160, U256};

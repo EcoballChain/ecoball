@@ -18,7 +18,6 @@
 
 pub mod account;
 pub mod authority_round;
-pub mod vpos;
 pub mod basic_authority;
 pub mod builtin;
 pub mod clique;
@@ -33,11 +32,11 @@ pub mod spec;
 pub mod state;
 pub mod step_duration;
 pub mod validator_set;
+pub mod vpos;
 
 pub use self::{
     account::Account,
     authority_round::{AuthorityRound, AuthorityRoundParams},
-    vpos::{Vpos, VposParams},
     basic_authority::{BasicAuthority, BasicAuthorityParams},
     builtin::{Builtin, Linear, Pricing},
     clique::{Clique, CliqueParams},
@@ -47,9 +46,10 @@ pub use self::{
     instant_seal::{InstantSeal, InstantSealParams},
     null_engine::{NullEngine, NullEngineParams},
     params::Params,
-    seal::{AuthorityRoundSeal, VposSeal, Ethereum, Seal, TendermintSeal},
+    seal::{AuthorityRoundSeal, Ethereum, Seal, TendermintSeal, VposSeal},
     spec::{ForkSpec, Spec},
     state::State,
     step_duration::StepDuration,
     validator_set::ValidatorSet,
+    vpos::{Vpos, VposParams},
 };

@@ -16,7 +16,7 @@
 
 //! Engine deserialization.
 
-use super::{AuthorityRound, Vpos, BasicAuthority, Clique, Ethash, InstantSeal, NullEngine};
+use super::{AuthorityRound, BasicAuthority, Clique, Ethash, InstantSeal, NullEngine, Vpos};
 
 /// Engine deserialization.
 #[derive(Debug, PartialEq, Deserialize)]
