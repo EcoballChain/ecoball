@@ -771,7 +771,7 @@ dependencies = [
 
 [[package]]
 name = "ecoball"
-version = "1.0.1"
+version = "1.0.2"
 dependencies = [
  "ansi_term 0.10.2",
  "atty",
@@ -3282,7 +3282,7 @@ dependencies = [
 
 [[package]]
 name = "parity-version"
-version = "1.0.1"
+version = "1.0.2"
 dependencies = [
  "parity-bytes",
  "rlp",
