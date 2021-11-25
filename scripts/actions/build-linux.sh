@@ -8,15 +8,15 @@ export RUSTFLAGS=" -Clink-arg=-s -Ctarget-feature=+aes,+sse2,+ssse3"
 echo "_____ Build Ecoball and tools _____"
 
 time cargo build --verbose --color=always --release --features final
-time cargo build --verbose --color=always --release -p evmbin
-time cargo build --verbose --color=always --release -p ethstore-cli
-time cargo build --verbose --color=always --release -p ethkey-cli
+# time cargo build --verbose --color=always --release -p evmbin
+# time cargo build --verbose --color=always --release -p ethstore-cli
+# time cargo build --verbose --color=always --release -p ethkey-cli
 
 echo "_____ Post-processing binaries _____"
 rm -rf artifacts/*
 mkdir -p artifacts/
 
 cp -v target/release/ecoball artifacts/ecoball
-cp -v target/release/openethereum-evm artifacts/openethereum-evm
-cp -v target/release/ethstore artifacts/ethstore
-cp -v target/release/ethkey artifacts/ethkey
+# cp -v target/release/openethereum-evm artifacts/openethereum-evm
+# cp -v target/release/ethstore artifacts/ethstore
+# cp -v target/release/ethkey artifacts/ethkey
