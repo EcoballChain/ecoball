@@ -899,6 +899,11 @@ impl BlockChainClient for TestBlockChainClient {
         }
     }
 
+    fn is_aura(&self) -> bool {
+        let engine = self.spec.engine.clone();
+        engine.name() == "AuthorityRound" || engine.name() == "Vpos"
+    }
+
     fn is_processing_fork(&self) -> bool {
         false
     }
