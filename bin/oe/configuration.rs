@@ -1607,13 +1607,7 @@ mod tests {
         // given
 
         // when
-        let conf = parse(&[
-            "ecoball",
-            "--chain",
-            "goerli",
-            "--identity",
-            "testname",
-        ]);
+        let conf = parse(&["ecoball", "--chain", "goerli", "--identity", "testname"]);
 
         // then
         assert_eq!(
@@ -1669,11 +1663,7 @@ mod tests {
             .unwrap()
             .write_all(b"  \n\t\n")
             .unwrap();
-        let args = vec![
-            "ecoball",
-            "--reserved-peers",
-            filename.to_str().unwrap(),
-        ];
+        let args = vec!["ecoball", "--reserved-peers", filename.to_str().unwrap()];
         let conf = Configuration::parse_cli(&args).unwrap();
         assert!(conf.init_reserved_nodes().is_ok());
     }
@@ -1683,11 +1673,7 @@ mod tests {
         let tempdir = TempDir::new("").unwrap();
         let filename = tempdir.path().join("peers_comments");
         File::create(&filename).unwrap().write_all(b"# Sample comment\nenode://6f8a80d14311c39f35f516fa664deaaaa13e85b2f7493f37f6144d86991ec012937307647bd3b9a82abe2974e1407241d54947bbb39763a4cac9f77166ad92a0@172.0.0.1:30303\n").unwrap();
-        let args = vec![
-            "ecoball",
-            "--reserved-peers",
-            filename.to_str().unwrap(),
-        ];
+        let args = vec!["ecoball", "--reserved-peers", filename.to_str().unwrap()];
         let conf = Configuration::parse_cli(&args).unwrap();
         let reserved_nodes = conf.init_reserved_nodes();
         assert!(reserved_nodes.is_ok());
@@ -1803,10 +1789,7 @@ mod tests {
         match conf.into_command().unwrap().cmd {
             Cmd::Run(c) => {
                 assert_eq!(c.name, "Somebody");
-                assert!(c
-                    .net_conf
-                    .client_version
-                    .starts_with("Ecoball/Somebody/"));
+                assert!(c.net_conf.client_version.starts_with("Ecoball/Somebody/"));
             }
             _ => panic!("Should be Cmd::Run"),
         }
@@ -1818,13 +1801,7 @@ mod tests {
 
         // when
         let conf0 = parse(&["ecoball", "--ports-shift", "1", "--stratum"]);
-        let conf1 = parse(&[
-            "ecoball",
-            "--ports-shift",
-            "1",
-            "--jsonrpc-port",
-            "8544",
-        ]);
+        let conf1 = parse(&["ecoball", "--ports-shift", "1", "--jsonrpc-port", "8544"]);
 
         // then
         assert_eq!(conf0.net_addresses().unwrap().0.port(), 30304);
@@ -1908,11 +1885,7 @@ mod tests {
         let all = parse(&["ecoball", "--allow-ips", "all"]);
         let private = parse(&["ecoball", "--allow-ips", "private"]);
         let block_custom = parse(&["ecoball", "--allow-ips", "-10.0.0.0/8"]);
-        let combo = parse(&[
-            "ecoball",
-            "--allow-ips",
-            "public 10.0.0.0/8 -1.0.0.0/8",
-        ]);
+        let combo = parse(&["ecoball", "--allow-ips", "public 10.0.0.0/8 -1.0.0.0/8"]);
         let ipv6_custom_public = parse(&["ecoball", "--allow-ips", "public fc00::/7"]);
         let ipv6_custom_private = parse(&["ecoball", "--allow-ips", "private -fc00::/7"]);
 

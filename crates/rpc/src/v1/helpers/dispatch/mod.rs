@@ -392,12 +392,13 @@ where
     C: BlockChainClient,
     M: MinerService,
 {
-    max(U256::from(11000000000u64),
-     client
-        .gas_price_corpus(100)
-        .percentile(percentile)
-        .cloned()
-        .unwrap_or_else(|| miner.sensible_gas_price())
+    max(
+        U256::from(11000000000u64),
+        client
+            .gas_price_corpus(100)
+            .percentile(percentile)
+            .cloned()
+            .unwrap_or_else(|| miner.sensible_gas_price()),
     )
 }
 

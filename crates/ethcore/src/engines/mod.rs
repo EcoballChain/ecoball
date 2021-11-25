@@ -17,24 +17,24 @@
 //! Consensus engine specification and basic implementations.
 
 mod authority_round;
-mod vpos;
 mod basic_authority;
 mod clique;
 mod instant_seal;
 mod null_engine;
 mod validator_set;
+mod vpos;
 
 pub mod block_reward;
 pub mod signer;
 
 pub use self::{
     authority_round::AuthorityRound,
-    vpos::Vpos,
     basic_authority::BasicAuthority,
     clique::Clique,
     instant_seal::{InstantSeal, InstantSealParams},
     null_engine::NullEngine,
     signer::EngineSigner,
+    vpos::Vpos,
 };
 
 // TODO [ToDr] Remove re-export (#10130)

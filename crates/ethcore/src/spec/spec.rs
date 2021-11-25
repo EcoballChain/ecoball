@@ -36,8 +36,8 @@ use vm::{AccessList, ActionParams, ActionValue, CallType, EnvInfo, ParamsType};
 
 use builtin::Builtin;
 use engines::{
-    AuthorityRound, Vpos, BasicAuthority, Clique, EthEngine, InstantSeal, InstantSealParams, NullEngine,
-    DEFAULT_BLOCKHASH_CONTRACT,
+    AuthorityRound, BasicAuthority, Clique, EthEngine, InstantSeal, InstantSealParams, NullEngine,
+    Vpos, DEFAULT_BLOCKHASH_CONTRACT,
 };
 use error::Error;
 use executive::Executive;
@@ -801,10 +801,8 @@ impl Spec {
                 AuthorityRound::new(authority_round.params.into(), machine)
                     .expect("Failed to start AuthorityRound consensus engine.")
             }
-            ethjson::spec::Engine::Vpos(vpos) => {
-                Vpos::new(vpos.params.into(), machine)
-                    .expect("Failed to start Vpos consensus engine.")
-            }
+            ethjson::spec::Engine::Vpos(vpos) => Vpos::new(vpos.params.into(), machine)
+                .expect("Failed to start Vpos consensus engine."),
         };
 
         // Dummy value is a filler for non-existent transitions

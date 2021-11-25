@@ -44,9 +44,9 @@ use std::{
 
 use ansi_term::Colour;
 use ctrlc::CtrlC;
+use ecoball::{start, ExecutionAction};
 use ethcore_logger::setup_log;
 use fdlimit::raise_fd_limit;
-use ecoball::{start, ExecutionAction};
 use parity_daemonize::AsHandle;
 use parking_lot::{Condvar, Mutex};
 

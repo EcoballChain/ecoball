@@ -83,7 +83,7 @@ mod tests {
     use crate::{
         bytes::Bytes,
         hash::*,
-        spec::{AuthorityRoundSeal, VposSeal, Ethereum, Seal, TendermintSeal},
+        spec::{AuthorityRoundSeal, Ethereum, Seal, TendermintSeal, VposSeal},
         uint::Uint,
     };
     use ethereum_types::{H256 as Eth256, H520 as Eth520, H64 as Eth64, U256};
@@ -159,6 +159,5 @@ mod tests {
 			step: Uint(U256::from(0x0)),
 			signature: H520(Eth520::from_str("2000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002").unwrap())
 		}));
-
     }
 }

@@ -1080,8 +1080,7 @@ mod tests {
         let args = Args::parse(&["ecoball", "export", "state", "--no-storage"]).unwrap();
         assert_eq!(args.flag_export_state_no_storage, true);
 
-        let args =
-            Args::parse(&["ecoball", "export", "state", "--min-balance", "123"]).unwrap();
+        let args = Args::parse(&["ecoball", "export", "state", "--min-balance", "123"]).unwrap();
         assert_eq!(args.arg_export_state_min_balance, Some("123".to_string()));
     }
 

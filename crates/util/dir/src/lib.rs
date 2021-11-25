@@ -277,11 +277,7 @@ fn default_path(t: AppDataType) -> Option<PathBuf> {
     }
 
     let mut root = data_root(t).ok()?;
-    root.push(if LOWERCASE {
-        "ecoball"
-    } else {
-        "Ecoball"
-    });
+    root.push(if LOWERCASE { "ecoball" } else { "Ecoball" });
     Some(root)
 }
 

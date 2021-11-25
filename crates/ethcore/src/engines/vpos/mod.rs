@@ -652,7 +652,7 @@ struct PermissionedStep {
 }
 
 /// Engine using `Vpos` proof-of-authority BFT consensus.
-pub struct Vpos{
+pub struct Vpos {
     transition_service: IoService<()>,
     step: Arc<PermissionedStep>,
     client: Arc<RwLock<Option<Weak<dyn EngineClient>>>>,
@@ -975,10 +975,7 @@ where
 
 impl Vpos {
     /// Create a new instance of Vpos engine.
-    pub fn new(
-        our_params: VposParams,
-        machine: EthereumMachine,
-    ) -> Result<Arc<Self>, Error> {
+    pub fn new(our_params: VposParams, machine: EthereumMachine) -> Result<Arc<Self>, Error> {
         if !our_params.step_durations.contains_key(&0) {
             error!(target: "engine", "Authority Round step 0 duration is undefined, aborting");
             return Err(Error::from_kind(ErrorKind::Engine(EngineError::Custom(
@@ -2310,8 +2307,8 @@ fn next_step_time_duration(info: StepDurationInfo, time: u64) -> Option<(u64, u6
 #[cfg(test)]
 mod tests {
     use super::{
-        calculate_score, next_step_time_duration, util::BoundContract, Vpos,
-        VposParams, EmptyStep, SealedEmptyStep, StepDurationInfo,
+        calculate_score, next_step_time_duration, util::BoundContract, EmptyStep, SealedEmptyStep,
+        StepDurationInfo, Vpos, VposParams,
     };
     use accounts::AccountProvider;
     use block::*;
