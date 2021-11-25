@@ -57,7 +57,7 @@
     "eip1559BaseFeeInitialValue": "0x2540be400",
     "eip1559FeeCollector": "0x0000000000000000000000000000000000000000",
     "eip1559FeeCollectorTransition": "0x10",
-    "validate_service_transactions_transition": 0
+    "validateServiceTransactionsTransition": 0
 
   },
   "genesis": {
