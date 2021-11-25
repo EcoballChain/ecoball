@@ -15,7 +15,7 @@ echo "_____ Post-processing binaries _____"
 rm -rf artifacts
 mkdir -p artifacts
 
-cp --verbose target/release/openethereum.exe artifacts/openethereum.exe
+cp --verbose target/release/ecoball.exe artifacts/ecoball.exe
 cp --verbose target/release/openethereum-evm.exe artifacts/openethereum-evm.exe
 cp --verbose target/release/ethstore.exe artifacts/ethstore.exe
 cp --verbose target/release/ethkey.exe artifacts/ethkey.exe
