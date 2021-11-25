@@ -104,6 +104,7 @@ jobs:
         id:                     create_zip_linux
         run: |
           cd linux-artifacts/
+          chmod +x ecoball
           zip -rT ecoball-linux-${{ env.RELEASE_VERSION }}.zip *
           ls ecoball-linux-${{ env.RELEASE_VERSION }}.zip
           cd ..
@@ -117,6 +118,7 @@ jobs:
         id:                     create_zip_macos
         run: |
           cd macos-artifacts/
+          chmod +x ecoball
           zip -rT ecoball-macos-${{ env.RELEASE_VERSION }}.zip *
           ls ecoball-macos-${{ env.RELEASE_VERSION }}.zip
           cd ..
