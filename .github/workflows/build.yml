@@ -31,16 +31,16 @@ jobs:
       # ==============================
 
       # - name:                   Install LLVM for Windows
-      #   if:                     matrix.platform == 'windows2019'
+      #   if:                     matrix.platform == 'windows-2019'
       #   run:                    choco install llvm
 
       # - name:                   Build Ecoball for Windows
-      #   if:                     matrix.platform == 'windows2019'
+      #   if:                     matrix.platform == 'windows-2019'
       #   run:                    sh scripts/actions/build-windows.sh ${{matrix.platform}}
 
       # - name:                   Upload Windows build
       #   uses:                   actions/upload-artifact@v2
-      #   if:                     matrix.platform == 'windows2019'
+      #   if:                     matrix.platform == 'windows-2019'
       #   with:
       #     name:                 windows-artifacts
       #     path:                 artifacts
@@ -50,7 +50,7 @@ jobs:
       # ==============================
     
       - name:                   Build Ecoball for ${{matrix.platform}}
-        if:                     matrix.platform != 'windows2019'
+        if:                     matrix.platform != 'windows-2019'
         run:                    sh scripts/actions/build-linux.sh ${{matrix.platform}}
 
       - name:                   Upload Linux build

@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         platform:
-          - windows2019 # custom runner
+          - windows-2019 # custom runner
         toolchain:
           - 1.52.1
     runs-on:                    ${{ matrix.platform }}
