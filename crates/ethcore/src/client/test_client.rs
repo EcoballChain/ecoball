@@ -1095,6 +1095,10 @@ impl BlockChainClient for TestBlockChainClient {
         }
         None
     }
+
+    fn is_aura(&self) -> bool {
+        self.engine().name() == "AuthorityRound"
+    }
 }
 
 impl IoClient for TestBlockChainClient {
